@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插件配置页面</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <h1>插件配置</h1>
+
+    <form id="config-form">
+        <div class="form-group">
+            <label for="url">基本 URL</label>
+            <input type="url" id="url" value="https://push.uuneo.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="key-input">Key 输入</label>
+            <input type="text" id="key-input" placeholder="输入 Key">
+            <button type="button" id="add-key">添加 Key</button>
+        </div>
+
+        <div class="form-group">
+            <label>Key 列表</label>
+            <ul id="key-list" class="keyUl"></ul>
+        </div>
+
+        <div class="form-group">
+            <label for="sound">Sound</label>
+            <input type="text" value="success" id="sound" required>
+        </div>
+
+        <div class="form-group">
+            <label for="group">Group</label>
+            <input type="text" id="group" value="Chrome" required>
+        </div>
+
+        <div class="form-group">
+            <label for="level">Level</label>
+            <select id="level">
+                <option value="active">active(标准通知)</option>
+                <option value="timeSensitive">timeSensitive(即时通知)</option>
+                <option value="passive">passive(静默通知)</option>
+            </select>
+        </div>
+
+        <button type="submit">保存配置</button>
+    </form>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
