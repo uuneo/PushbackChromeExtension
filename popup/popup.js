@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Load saved options and set up initial state
   loadOptions();
+  setLang();
 });
 
 function loadOptions() {
@@ -103,4 +104,11 @@ function message(msg) {
   setTimeout(() => {
     popup.style.display = "none";
   }, 1000); // 1000 毫秒 = 1 秒
+}
+
+function setLang() {
+  document.querySelector("#appStoreLocal").innerHTML = chrome.i18n.getMessage("appStoreLocal");
+  document.querySelector("#pushConfigLocal").innerHTML = chrome.i18n.getMessage("pushConfigLocal");
+  document.querySelector("#saveLocal").innerHTML = chrome.i18n.getMessage("saveLocal");
+  document.querySelector("#keyListLocal").innerHTML = chrome.i18n.getMessage("keyListLocal");
 }
