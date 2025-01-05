@@ -88,15 +88,13 @@ function notifyUser(title, message) {
 }
 
 function sendToPhone(data, mode) {
-	console.log("模拟将以下数据发送到手机:", data, mode);
 	chrome.storage.sync.get("config", (result) => {
 		let keys = result.config.keys || [];
 		if (!keys || keys.length === 0) {
 			return;
 		}
-		let url = result.config.url || "https://push.uuneo.com";
 		let sound = result.config.sound || "success";
-		let group = result.config.group || "";
+		let group = result.config.group || "Chrome";
 		let level = result.config.level || "active";
 
 		let params = {
@@ -119,7 +117,7 @@ function sendToPhone(data, mode) {
 		}
 
 		keys.forEach((key) => {
-			makeRequest(url, key, params);
+			makeRequest( key, params);
 		});
 	});
 }
@@ -132,19 +130,19 @@ chrome.action.onClicked.addListener((tab) => {
 });
 
 // 编写一个请求函数，使用 encodeURIComponent 对参数进行编码
-function makeRequest(url, key, params) {
-	let urlWithParams = url;
+function makeRequest(key, params) {
+	let urlWithParams = key;
 
 	// 构建查询字符串并对参数进行编码
 	const encodedParams = Object.keys(params)
-		.map((key) => {
+		.map((key1) => {
 			// 使用 encodeURIComponent 对键和值进行编码
-			return `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`;
+			return `${encodeURIComponent(key1)}=${encodeURIComponent(params[key1])}`;
 		})
 		.join("&");
 
 	// 拼接 URL 和查询字符串
-	urlWithParams = `${url}/${key}?${encodedParams}`;
+	urlWithParams = `${key}?${encodedParams}`;
 
 	// 发送 GET 请求
 	fetch(urlWithParams, {

@@ -1,9 +1,9 @@
 {
 	"manifest_version": 3,
 	"name": "Pushback",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Push to iphone",
-	"options_page": "options/index.html",
+	"options_page": "popup/index.html",
 
 	"action": {
 		"default_icon": {
